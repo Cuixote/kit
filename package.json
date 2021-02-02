@@ -4,7 +4,9 @@
   "description": "",
   "main": "main.js",
   "keywords": [
-    "js kit", "clone deep", "promise"
+    "js kit",
+    "clone deep",
+    "promise"
   ],
   "scripts": {
     "deploy": "npm publish"
