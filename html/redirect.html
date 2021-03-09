@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>跳转中...</title>
+  <script>
+    try {
+      var queryArr = window.location.search.slice(1).split('&')
+      if (queryArr.length) {
+        var queryObj = {}
+        for(var d = 0; d < queryArr.length; d++) {
+          var keyVal = queryArr[d].split('=')
+          queryObj[keyVal[0]] = decodeURIComponent(keyVal[1])
+        }
+        if (queryObj.origin) {
+          if (queryObj.target) {
+            setTimeout(() => {
+              location.href = queryObj.origin
+            }, 2000)
+            location.href = queryObj.target
+          } else {
+            location.href = queryObj.origin
+          }
+        } else {
+          throw new Error('链接中缺少必要参数origin')
+        }
+      } else {
+        throw new Error('链接中没有带参数')
+      }
+    } catch (e) {
+      console.log(e)
+      window.alert('目标页面链接错误')
+      window.history.back()
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
