@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../lib/mini-vue.js"></script>
+</head>
+<body>
+<script>
+  var obj1 = {
+    name: 'tom',
+    job: 'teacher'
+  }
+  var obj2 = {
+    name: 'jack',
+    job: 'writer'
+  }
+  observe(obj1)
+  observe(obj2)
+  miniWatch(obj1, 'name', (val, oldVal) => {
+    console.log('obj1', val, oldVal)
+  })
+  miniWatch(obj2, 'name', (val, oldVal) => {
+    console.log('obj2', val, oldVal)
+  })
+  miniWatch(obj1, function () {
+    return obj1.name + obj1.job
+  }, (val, oldVal) => {
+    console.log('computed', val, oldVal)
+  })
+  obj1.name;
+  obj1.name = 'june'
+</script>
+</body>
+</html>
